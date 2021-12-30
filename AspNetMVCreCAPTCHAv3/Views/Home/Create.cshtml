@@ -1,0 +1,24 @@
+﻿@model AspNetMVCreCAPTCHAv3.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Home"))
+{
+    <div class="mb-3">
+        <label for="FullName" class="form-label">Full Name</label>
+        @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email address</label>
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+}
