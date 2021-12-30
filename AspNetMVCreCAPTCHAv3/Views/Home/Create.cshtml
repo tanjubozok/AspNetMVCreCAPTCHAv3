@@ -6,8 +6,21 @@
 
 <h2>Create</h2>
 
+<script src="https://www.google.com/recaptcha/api.js?render=secretkey"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('secretkey', { action: 'create' }).then(function (token) {
+            $("#GoogleCaptchaToken").val(token);
+        });
+    });
+</script>
+
+
+
 @using (Html.BeginForm("Create", "Home"))
 {
+    @Html.ValidationSummary()
+
     <div class="mb-3">
         <label for="FullName" class="form-label">Full Name</label>
         @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
@@ -20,5 +33,7 @@
         <label for="Password" class="form-label">Password</label>
         @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
     </div>
+    @Html.HiddenFor(x => x.GoogleCaptchaToken)
+
     <button type="submit" class="btn btn-success">Submit</button>
 }
